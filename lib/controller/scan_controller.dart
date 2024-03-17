@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:camera/camera.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ScanController extends GetxController {
@@ -32,11 +31,12 @@ class ScanController extends GetxController {
   initCamera() async {
     if (await Permission.camera.request().isGranted) {
       cameras = await availableCameras();
-      cameraController =
-          await CameraController(cameras[0], ResolutionPreset.max);
+      cameraController = CameraController(cameras[0], ResolutionPreset.max,
+          imageFormatGroup: ImageFormatGroup.jpeg);
 
       await cameraController.initialize().then((value) {
         cameraController.startImageStream((image) {
+          //cameraCount++;
           if (cameraCount % 10 == 0) {
             cameraCount = 0;
             objectDetector(image);
