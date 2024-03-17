@@ -17,7 +17,7 @@ class CameraView extends StatelessWidget {
                       CameraPreview(controller.cameraController),
                       Positioned(
                         top: controller.y * 700,
-                        right: controller.y * 500,
+                        right: controller.x * 500,
                         child: Container(
                           width: (controller.w * 100 * context.width / 100),
                           height: (controller.h * 100 * context.height / 100),
