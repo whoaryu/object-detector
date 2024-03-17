@@ -14,7 +14,7 @@ class CameraView extends StatelessWidget {
             return controller.isCameraInitialized.value
                 ? Stack(
                     children: [
-                      CameraPreview(controller.cameraController),
+                      CameraPreview(controller.cameraController!),
                       Positioned(
                         top: controller.y * 700,
                         right: controller.x * 500,
